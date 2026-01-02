@@ -2,7 +2,7 @@
 $eventi = [[
     "idEvento" => 1,
     "titolo" => "Evento 1",
-    "descEvento" => "prova primo evento",
+    "descrizione" => "prova primo evento",
     "scadenza" => date("2026-3-11 8:17:00"),
     "stato" => 0,
     "categoria" => "lavoro"
@@ -10,7 +10,7 @@ $eventi = [[
     [
         "idEvento" => 2,
         "titolo" => "Evento 2",
-        "descEvento" => "prova primo ",
+        "descrizione" => "prova primo ",
         "scadenza" => date("2026-5-11 15:17:00"),
         "stato" => 0,
         "categoria" => "scuola"
@@ -33,14 +33,15 @@ $eventi = [[
     <a href="index.html">Logout</a>
 </header>
 
-    <div>
-        name
-    </div>
+
 
 <main>
     <?php
     foreach ($eventi as $evento) {
-        echo "";
+        echo "<div>
+                <h1>".$evento["titolo"]."</h1>
+                <h2>".$evento["descrizione"]."</h2>
+</div>";
     }
     ?>
 </main>

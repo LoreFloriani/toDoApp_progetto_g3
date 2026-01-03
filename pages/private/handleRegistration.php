@@ -1,4 +1,7 @@
 <?php
+
+
+/*
 //funzione che si occupa di effettuare la registrazione dell'utente
 
     require_once '../../core/functions.php';
@@ -19,4 +22,7 @@
             $error = $result;
         }
     }
+
+*/
+
 ?>

@@ -1,0 +1,122 @@
+/* --- Form login/registrazione --- */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: #ffffff;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-small {
+    height: 40px;
+}
+
+
+.form-container {
+    max-width: 400px;
+    margin: 80px auto;
+    padding: 30px;
+    background-color: #ffffff;           /* palette chiara uniforme */
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+.form-container .logo-big {
+    height: 120px;
+    margin-bottom: 20px;
+}
+
+.form-container h2 {
+    margin-bottom: 20px;
+    color: #2c3e50;                      /* stesso colore titoli index */
+}
+
+.form-container label {
+    display: block;
+    text-align: left;
+    margin-bottom: 15px;
+    color: #333;
+    font-weight: 500;
+}
+
+.form-container input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-container button.btn {
+    width: 100%;
+    margin-top: 15px;
+    background-color: #3498db;           /* stesso colore bottoni index */
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.form-container button.btn:hover {
+    background-color: #2980b9;
+}
+
+.form-footer {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Link nel form coerenti con palette chiara */
+.form-footer a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}
+
+/* --- Footer identico all'index --- */
+footer {
+    display: flex;
+    justify-content: space-between;
+    background-color: #ffffff;
+    border-top: 2px solid #e0e0e0;
+    padding: 20px 50px;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+footer > div {
+    flex: 1;
+    text-align: center;
+    padding: 0 10px;
+    min-width: 150px;
+}
+
+footer > div p {
+    margin: 0;
+    word-wrap: break-word;
+}
+
+footer a {
+    text-decoration: none;
+    color: #7f8c8d;           /* link grigio chiaro footer */
+}
+
+footer a:hover,
+footer a:visited,
+footer a:active {
+    color: #7f8c8d;
+}

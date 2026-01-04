@@ -1,0 +1,155 @@
+/* --- Reset base --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* --- Header --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: #ffffff;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-small {
+    height: 40px;
+}
+
+.header-left h1 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+}
+
+.header-right a.btn {
+    margin-left: 15px;
+}
+
+/* --- Buttons comuni --- */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+}
+
+/* --- Main --- */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.main-content {
+    max-width: 700px;
+}
+
+.logo-big {
+    height: 150px;
+    margin-bottom: 20px;
+}
+
+.main-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.main-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+.main-buttons a {
+    margin: 0 10px;
+}
+
+/* --- Footer --- */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    border-top: 2px solid #e0e0e0;
+    padding: 20px 50px;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* --- Footer --- */
+footer {
+    display: flex;
+    justify-content: space-between; /* lascia lo spazio tra le 3 colonne */
+    background-color: #ffffff;
+    border-top: 2px solid #e0e0e0;
+    padding: 20px 50px;
+    flex-wrap: wrap; /* permette ai div di andare a capo su schermi piccoli */
+    font-size: 0.9rem;
+    color: #666;
+}
+
+footer > div {
+    flex: 1; /* ogni div occupa 1/3 dello spazio */
+    text-align: center; /* centra il contenuto orizzontalmente */
+    padding: 0 10px; /* piccolo padding interno per non toccarsi */
+    min-width: 150px; /* evita che il div diventi troppo stretto su schermi piccoli */
+}
+
+/* Centrare verticalmente in caso di altezza maggiore */
+footer > div p {
+    margin: 0;
+    word-wrap: break-word; /* va a capo se troppo lungo */
+}
+
+/* --- Link solo nel footer --- */
+footer a {
+    text-decoration: none;          /* rimuove sottolineatura */
+    color: #7f8c8d;                 /* colore più chiaro rispetto al testo normale */
+}
+
+footer a:hover,
+footer a:visited,
+footer a:active {
+    color: #7f8c8d;                 /* stesso colore sempre */
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    header, footer {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .main-buttons a {
+        display: block;
+        margin: 10px 0;
+    }
+}

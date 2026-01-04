@@ -98,86 +98,103 @@ $eventi = [
         ]
 ];
 
-
 $now = new DateTime();
 ?>
 <!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Remindly</title>
+    <title>Remindly - Home</title>
+    <!-- CSS esterno -->
+    <link rel="stylesheet" href="../css/homeStyle.css">
+    <!-- JS -->
     <script defer src="../js/homeScript.js"></script>
 </head>
 <body>
 
 <header>
-    <h1>Remindly</h1>
-    <a href="index.html">Logout</a>
+    <div class="header-left">
+        <img src="../img/logo.png" alt="Logo Remindly" class="logo-small">
+        <h1>Remindly</h1>
+    </div>
+    <div class="header-right">
+        <a href="index.html" class="btn-logout">Logout</a>
+    </div>
 </header>
 
 <main>
 
     <section>
         <h2>🔴 Scadenze urgenti (entro 2 giorni)</h2>
-        <?php foreach ($eventi as $evento): ?>
-            <?php
-            $scadenza = new DateTime($evento["scadenza"]);
-            $diff = $now->diff($scadenza)->days;
-            if ($evento["stato"] == 0 && $diff <= 2):
-                ?>
-                <div class="evento" data-id="<?= $evento["idEvento"] ?>">
-                    <h3><?= $evento["titolo"] ?></h3>
-                    <p><?= $evento["descrizione"] ?></p>
-                    <small><?= $evento["scadenza"] ?></small>
-                </div>
-            <?php endif; ?>
-        <?php endforeach; ?>
+        <div class="grid-eventi">
+            <?php foreach ($eventi as $evento):
+                $scadenza = new DateTime($evento["scadenza"]);
+                $diff = (int)$now->diff($scadenza)->format("%r%a");
+                if ($evento["stato"] == 0 && $diff <= 2):
+                    ?>
+                    <div class="evento" data-id="<?= $evento["idEvento"] ?>">
+                        <h3><?= $evento["titolo"] ?></h3>
+                        <p><?= $evento["descrizione"] ?></p>
+                        <small><?= $evento["scadenza"] ?></small>
+                        <span class="categoria"><?= $evento["categoria"] ?></span>
+                    </div>
+                <?php endif; endforeach; ?>
+        </div>
     </section>
 
     <section>
         <h2>🟠 Scadenze vicine (entro 7 giorni)</h2>
-        <?php foreach ($eventi as $evento): ?>
-            <?php
-            $scadenza = new DateTime($evento["scadenza"]);
-            $diff = $now->diff($scadenza)->days;
-            if ($evento["stato"] == 0 && $diff > 2 && $diff <= 7):
-                ?>
-                <div class="evento" data-id="<?= $evento["idEvento"] ?>">
-                    <h3><?= $evento["titolo"] ?></h3>
-                    <p><?= $evento["descrizione"] ?></p>
-                    <small><?= $evento["scadenza"] ?></small>
-                </div>
-            <?php endif; ?>
-        <?php endforeach; ?>
+        <div class="grid-eventi">
+            <?php foreach ($eventi as $evento):
+                $scadenza = new DateTime($evento["scadenza"]);
+                $diff = (int)$now->diff($scadenza)->format("%r%a");
+                if ($evento["stato"] == 0 && $diff > 2 && $diff <= 7):
+                    ?>
+                    <div class="evento" data-id="<?= $evento["idEvento"] ?>">
+                        <h3><?= $evento["titolo"] ?></h3>
+                        <p><?= $evento["descrizione"] ?></p>
+                        <small><?= $evento["scadenza"] ?></small>
+                        <span class="categoria"><?= $evento["categoria"] ?></span>
+                    </div>
+                <?php endif; endforeach; ?>
+        </div>
     </section>
 
     <section>
         <h2>🟢 Scadenze lontane</h2>
-        <?php foreach ($eventi as $evento): ?>
-            <?php
-            $scadenza = new DateTime($evento["scadenza"]);
-            $diff = $now->diff($scadenza)->days;
-            if ($evento["stato"] == 0 && $diff > 7):
-                ?>
-                <div class="evento" data-id="<?= $evento["idEvento"] ?>">
-                    <h3><?= $evento["titolo"] ?></h3>
-                    <p><?= $evento["descrizione"] ?></p>
-                    <small><?= $evento["scadenza"] ?></small>
-                </div>
-            <?php endif; ?>
-        <?php endforeach; ?>
+        <div class="grid-eventi">
+            <?php foreach ($eventi as $evento):
+                $scadenza = new DateTime($evento["scadenza"]);
+                $diff = (int)$now->diff($scadenza)->format("%r%a");
+                if ($evento["stato"] == 0 && $diff > 7):
+                    ?>
+                    <div class="evento" data-id="<?= $evento["idEvento"] ?>">
+                        <h3><?= $evento["titolo"] ?></h3>
+                        <p><?= $evento["descrizione"] ?></p>
+                        <small><?= $evento["scadenza"] ?></small>
+                        <span class="categoria"><?= $evento["categoria"] ?></span>
+                    </div>
+                <?php endif; endforeach; ?>
+        </div>
     </section>
 
     <details>
         <summary>✅ Eventi completati</summary>
-        <div id="completati"></div>
+        <div class="grid-eventi" id="completati">
+            <?php foreach ($eventi as $evento):
+                if ($evento["stato"] != 0):
+                    ?>
+                    <div class="evento completato" data-id="<?= $evento["idEvento"] ?>">
+                        <h3><?= $evento["titolo"] ?></h3>
+                        <p><?= $evento["descrizione"] ?></p>
+                        <small><?= $evento["scadenza"] ?></small>
+                        <span class="categoria"><?= $evento["categoria"] ?></span>
+                    </div>
+                <?php endif; endforeach; ?>
+        </div>
     </details>
 
 </main>
-
-<footer>
-    <p>by Lorenzo Floriani</p>
-</footer>
 
 </body>
 </html>

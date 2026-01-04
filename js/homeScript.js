@@ -22,24 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
             location.reload();
             return;
         }
-/*
-        // --- UPDATE DATABASE ---
-        try {
-            const response = await fetch("updateStato.php", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ id, stato: nuovoStato })
-            });
 
-            if (!response.ok) throw new Error();
-
-        } catch (err) {
-            // rollback UI in caso di errore
-            evento.classList.toggle("completato");
-            location.reload();
-        }
-
- */
     });
 
 });

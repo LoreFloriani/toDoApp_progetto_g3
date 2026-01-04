@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    const form = document.querySelector("form");
-    const username = document.querySelector('input[name="username"]');
-    const password = document.querySelector('input[name="password"]');
+    const form = document.getElementById("login-form");
+    const username = document.getElementById("username");
+    const password = document.getElementById("password");
 
     form.addEventListener("submit", (e) => {
         let errori = [];

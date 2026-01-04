@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrazione - Remindly</title>
     <link rel="stylesheet" href="../css/registrationStyle.css">
-    <script defer src="../js/script.js"></script>
+    <script defer src="../js/registrationScript.js"></script>
 </head>
 <body>
 <header>
@@ -23,40 +23,40 @@
         <img src="../img/logo.png" alt="Logo Remindly" class="logo-big">
         <h2>Crea il tuo account</h2>
 
-        <form method="post" action="private/handleRegistration.php">
+        <form method="post" action="private/handleRegistration.php" id="login-form">
             <label>
                 Nome:
-                <input type="text" name="nome" required>
+                <input type="text" name="nome" id="nome" required>
             </label>
 
             <label>
                 Cognome:
-                <input type="text" name="cognome" required>
+                <input type="text" name="cognome" id="cognome" required>
             </label>
 
             <label>
                 Email:
-                <input type="email" name="email" required>
+                <input type="email" name="email" id="email" required>
             </label>
 
             <label>
                 Data nascita:
-                <input type="date" name="dataNascita" required>
+                <input type="date" name="dataNascita" id="dataNascita" required>
             </label>
 
             <label>
                 Username:
-                <input type="text" name="username" required>
+                <input type="text" name="username" id="username" required>
             </label>
 
             <label>
                 Password:
-                <input type="password" name="password" required>
+                <input type="password" name="password" id="password" required>
             </label>
 
             <label>
                 Conferma password:
-                <input type="password" name="Cpassword" required>
+                <input type="password" name="cPassword" id="cPassword" required>
             </label>
 
             <button type="submit" class="btn">Registrati</button>

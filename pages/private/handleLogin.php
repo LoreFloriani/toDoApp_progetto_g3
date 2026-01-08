@@ -1,9 +1,7 @@
 <?php
-// Prendi dati dal form
 $username = trim($_POST['username'] ?? '');
 $password = $_POST['password'] ?? '';
 
-// Array utenti/password
 $utenti = [
     "lorenzo"     => "pass1234",
     "mario"       => "mario2024",
@@ -17,13 +15,12 @@ $utenti = [
     "chiara"      => "chiara000"
 ];
 
-// Controllo login
 if (isset($utenti[$username]) && $utenti[$username] === $password) {
-    // Login riuscito
+
     header("Location: ../home.php");
-    // Qui puoi fare session_start() e salvare username in $_SESSION
+    
 } else {
-    // Login fallito
+    
     echo ("<script>
             alert('Username o password errati!');
             window.location.href = '../login.html';

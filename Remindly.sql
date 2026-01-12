@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Creato il: Gen 03, 2026 alle 17:11
--- Versione del server: 10.4.28-MariaDB
--- Versione PHP: 8.2.4
+-- Host: 127.0.0.1
+-- Generation Time: Jan 12, 2026 at 09:30 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,15 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `Remindly`
+-- Database: `remindly`
 --
-CREATE DATABASE IF NOT EXISTS `Remindly` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `Remindly`;
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `categoria`
+-- Table structure for table `categoria`
 --
 
 CREATE TABLE `categoria` (
@@ -37,7 +35,7 @@ CREATE TABLE `categoria` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `evento`
+-- Table structure for table `evento`
 --
 
 CREATE TABLE `evento` (
@@ -53,30 +51,37 @@ CREATE TABLE `evento` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `utente`
+-- Table structure for table `utente`
 --
 
 CREATE TABLE `utente` (
   `idUtente` int(11) NOT NULL,
   `nomeUtente` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `nomeAnagrafico` varchar(50) NOT NULL,
   `cognome` varchar(50) NOT NULL,
   `data_nascita` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Indici per le tabelle scaricate
+-- Dumping data for table `utente`
+--
+
+INSERT INTO `utente` (`idUtente`, `nomeUtente`, `password`, `nomeAnagrafico`, `cognome`, `data_nascita`) VALUES
+(7, 'ilVecio', '$2y$10$.zdyVT1mVHRK6NfYQVz7tetQLs63FUcbMFLj4ytDTiAlqQoGw1vjS', 'Lorenzo', 'Floriani', '2007-09-04');
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- Indici per le tabelle `categoria`
+-- Indexes for table `categoria`
 --
 ALTER TABLE `categoria`
   ADD PRIMARY KEY (`idCategoria`);
 
 --
--- Indici per le tabelle `evento`
+-- Indexes for table `evento`
 --
 ALTER TABLE `evento`
   ADD PRIMARY KEY (`idEvento`),
@@ -84,39 +89,39 @@ ALTER TABLE `evento`
   ADD KEY `idCategoria` (`idCategoria`);
 
 --
--- Indici per le tabelle `utente`
+-- Indexes for table `utente`
 --
 ALTER TABLE `utente`
   ADD PRIMARY KEY (`idUtente`);
 
 --
--- AUTO_INCREMENT per le tabelle scaricate
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT per la tabella `categoria`
+-- AUTO_INCREMENT for table `categoria`
 --
 ALTER TABLE `categoria`
   MODIFY `idCategoria` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `evento`
+-- AUTO_INCREMENT for table `evento`
 --
 ALTER TABLE `evento`
   MODIFY `idEvento` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `utente`
+-- AUTO_INCREMENT for table `utente`
 --
 ALTER TABLE `utente`
-  MODIFY `idUtente` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idUtente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- Limiti per le tabelle scaricate
+-- Constraints for dumped tables
 --
 
 --
--- Limiti per la tabella `evento`
+-- Constraints for table `evento`
 --
 ALTER TABLE `evento`
   ADD CONSTRAINT `evento_ibfk_1` FOREIGN KEY (`idUtente`) REFERENCES `utente` (`idUtente`),

@@ -1,31 +1,22 @@
 <?php
+session_start();
+require_once '../../core/functions.php';
+require_once '../../core/database.php';
+
 $username = trim($_POST['username'] ?? '');
 $password = $_POST['password'] ?? '';
 
-$utenti = [
-    "lorenzo"     => "pass1234",
-    "mario"       => "mario2024",
-    "giulia"      => "giuliaPwd",
-    "anna"        => "anna456",
-    "paolo"       => "paolo789",
-    "luca"        => "luca321",
-    "francesca"   => "fraPass",
-    "andrea"      => "andreapwd",
-    "simone"      => "simo2025",
-    "chiara"      => "chiara000"
-];
-
-if (isset($utenti[$username]) && $utenti[$username] === $password) {
-
-    header("Location: ../home.php");
-    
-} else {
-    
-    echo ("<script>
-            alert('Username o password errati!');
-            window.location.href = '../login.html';
-          </script>");
+if (empty($username) || empty($password)) {
+    die("Inserisci username e password.");
 }
 
+$result = handle_login($pdo, $username, $password);
 
-?>
+if (is_int($result)) {
+    header("Location: ../home.php?idUtente=$result");
+    exit;
+} else {
+
+    echo $result;
+}
+

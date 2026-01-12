@@ -16,7 +16,7 @@
     }
 
     function get_user_by_username($pdo, $username) {
-        $sql = "SELECT * FROM utente WHERE username = ?";
+        $sql = "SELECT * FROM utente WHERE nomeUtente = ?";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$username]);
         

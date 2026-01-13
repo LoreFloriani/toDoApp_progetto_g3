@@ -194,7 +194,7 @@ $now = new DateTime();
         </div>
     </details>
 
-    <button id="floatingBtn">+</button>
+    <button class="floatingBtn">+</button>
 
 
 </main>

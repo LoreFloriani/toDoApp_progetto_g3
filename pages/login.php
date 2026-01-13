@@ -14,7 +14,7 @@ if (isset($_SESSION['user_id'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Remindly</title>
-    <link rel="stylesheet" href="../css/logniStyle.css">
+    <link rel="stylesheet" href="../css/logniStyle.css?v=<?=time() ?>">
     <script defer src="../js/loginScript.js"></script>
 </head>
 <body>
@@ -44,12 +44,13 @@ if (isset($_SESSION['user_id'])){
             <button type="submit" class="btn">Accedi</button>
         </form>
 
+
+
         <?php
         if (isset($_SESSION['logato']) && $_SESSION['logato']){
-            echo ('<p class="registrazione-footer">Registrazione avvenuta con successo</p> <br>');
+            echo ('<p class="registrazione">Registrazione avvenuta con successo <br></p>');
         }
         ?>
-
         <p class="form-footer">Non hai un account? <a href="registration.html">Registrati qui</a></p>
     </div>
 </main>

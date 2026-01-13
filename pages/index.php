@@ -1,3 +1,10 @@
+<?php
+session_start();
+unset($_SESSION['logato']);
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="it">
 <head>

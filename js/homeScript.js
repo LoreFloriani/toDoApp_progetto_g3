@@ -25,4 +25,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
+
+    document.getElementById("floatingBtn").addEventListener("click", () => {
+        alert("Floating button cliccato!");
+    });
+
+
+
 });

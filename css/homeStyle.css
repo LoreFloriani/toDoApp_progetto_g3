@@ -144,3 +144,28 @@ details summary {
         height: auto;
     }
 }
+
+
+#floatingBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+
+    background-color: #3498db;
+    color: white;
+    font-size: 30px;
+
+    border: none;
+    cursor: pointer;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 1000;        /* sempre sopra agli altri elementi */
+}
+
+#floatingBtn:hover {
+    background-color: #0056b3;
+}

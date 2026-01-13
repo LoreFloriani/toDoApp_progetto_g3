@@ -12,7 +12,7 @@ unset($_SESSION['logato']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Remindly</title>
     <link rel="stylesheet" href="../css/indexStyle.css">
-    <script defer src="../js/script.js"></script>
+    <script defer src="../js/loginScript.js"></script>
 </head>
 <body>
 <header>

@@ -17,7 +17,9 @@ unset($_SESSION['logato']);
 <body>
 <header>
     <div class="header-left">
+        <a href="index.php">
         <img src="../img/logo.png" alt="Logo Remindly" class="logo-small">
+        </a>
         <h1>Remindly</h1>
     </div>
     <div class="header-right">

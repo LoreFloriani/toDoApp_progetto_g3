@@ -42,13 +42,13 @@ unset($_SESSION['logato']);
 
 <footer>
     <div class="footer-left">
-        <p>Creato per il progetto scolastico commissionato da <a href="https://github.com/leonardodeirossi">Leonardo Essam Deirossi</a></p>
+        <p>Progetto per le vacanze di Natale, commissionato dal <a href="https://github.com/leonardodeirossi">professor L. Deirossi</a> e dalla professoressa G. Peserico per la materia GPOI</p>
     </div>
     <div class="footer-center">
         <p>by <a href="https://github.com/LoreFloriani">Lorenzo Floriani</a>, <a href="https://github.com/AlbeCav">Alberto Cavallari</a> &  <a href="https://github.com/pietroAvi">Pietro Avi</a> </p>
     </div>
     <div class="footer-right">
-        <p><a href="https://github.com/LoreFloriani/toDoApp_progetto_g3.git">Repository progetto open source</a></p>
+        <p><a href="https://github.com/LoreFloriani/toDoApp_progetto_g3.git">Repository progetto</a></p>
     </div>
 </footer>
 </body>

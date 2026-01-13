@@ -23,6 +23,58 @@ function get_user_by_username($pdo, $username){
     return $user ?: null;
 }
 
+function get_event_by_userId($pdo, $user_id){
+    $sql = "SELECT * FROM evento WHERE idUtente = :utente";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['utente' => $user_id]);
+
+    $eventi = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $eventi ?: null;
+}
+
+function getEventi($pdo, $user_id , $after = 0, $before = 0){
+    $sql = "SELECT idEvento, titolo, descrizione, scadenza, nomeCategoria
+            from evento as e
+            inner join categoria as c on e.idCategoria = c.idCategoria
+            WHERE idUtente = :utente &&";
+    if ($before == 0 && $after != 0) {
+        $sql .= "
+        e.scadenza > DATE_ADD(CURDATE(), INTERVAL ".$after." DAY) && !completato
+        order by scadenza; 
+        ";
+    }elseif ($before != 0 && $after != 0){
+        $sql .= "
+        e.scadenza between DATE_ADD(CURDATE(), INTERVAL ".($after + 1)." DAY) and DATE_ADD(CURDATE(), INTERVAL ".$before." DAY) && !completato
+        order by scadenza;
+        ";
+    }elseif ($before != 0 && $after == 0){
+        $sql .= "
+        e.scadenza <= DATE_ADD(CURDATE(), INTERVAL ".$before." DAY) && !completato
+        order by scadenza;
+        ";
+    }else{
+        $sql .= "
+        completato
+        order by scadenza desc;
+        ";
+    }
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['utente' => $user_id]);
+
+    $eventi = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $eventi ?: null;
+
+}
+
+function changeEventStatus($pdo, $idEvento){
+    $sql = "UPDATE evento
+            SET completato = NOT completato
+            WHERE idEvento = :id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['id' => $idEvento]);
+}
+
 
 function create_user($pdo, $nomeUtente, $password, $nome, $cognome, $dataNascita) {
 

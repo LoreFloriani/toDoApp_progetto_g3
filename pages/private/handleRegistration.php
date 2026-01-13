@@ -1,5 +1,10 @@
 <?php
 session_start();
+if (isset($_SESSION['user_id'])){
+    session_unset();
+    session_destroy();
+    session_start();
+}
 require_once '../../core/functions.php';
 require_once '../../core/database.php';
 
@@ -20,8 +25,8 @@ if ($password !== $cPassword) {
 $result = create_user($pdo, $username, $password, $nome, $cognome, $dataNascita);
 
 if ($result === true) {
-
-    header('Location: ../login.html'); // reindirizza alla pagina login
+    $_SESSION['logato'] = true;
+    header('Location: ../login.php'); // reindirizza alla pagina login
     exit;
 } else {
 

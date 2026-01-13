@@ -76,6 +76,12 @@ header {
     color: #555;
 }
 
+.registrazione-footer {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #f5d033;
+}
+
 /* Link nel form coerenti con palette chiara */
 .form-footer a {
     color: #3498db;

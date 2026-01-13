@@ -13,7 +13,7 @@ if (empty($username) || empty($password)) {
 $result = handle_login($pdo, $username, $password);
 
 if (is_int($result)) {
-    header("Location: ../home.php?idUtente=$result");
+    header("Location: ../home.php");
     exit;
 } else {
 

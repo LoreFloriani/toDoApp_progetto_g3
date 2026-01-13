@@ -1,3 +1,13 @@
+<?php
+
+session_start();
+if (isset($_SESSION['user_id'])){
+    header("Location: home.php");
+    exit;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -34,6 +44,12 @@
             <button type="submit" class="btn">Accedi</button>
         </form>
 
+        <?php
+        if (isset($_SESSION['logato']) && $_SESSION['logato']){
+            echo ('<p class="registrazione-footer">Registrazione avvenuta con successo</p> <br>');
+        }
+        ?>
+
         <p class="form-footer">Non hai un account? <a href="registration.html">Registrati qui</a></p>
     </div>
 </main>
@@ -43,7 +59,7 @@
         <p>Creato per il progetto scolastico commissionato da <a href="https://github.com/leonardodeirossi">Leonardo Essam Deirossi</a></p>
     </div>
     <div class="footer-center">
-        <p>by <a href="https://github.com/LoreFloriani">Lorenzo Floriani</a>, <a href="https://github.com/AlbeCav">Alberto Cavallari</a> & Pietro Avi</p>
+        <p>by <a href="https://github.com/LoreFloriani">Lorenzo Floriani</a>, <a href="https://github.com/AlbeCav">Alberto Cavallari</a> &  <a href="https://github.com/pietroAvi">Pietro Avi</a> </p>
     </div>
     <div class="footer-right">
         <p><a href="https://github.com/LoreFloriani/toDoApp_progetto_g3.git">Repository progetto open source</a></p>

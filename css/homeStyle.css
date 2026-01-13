@@ -30,17 +30,30 @@ header {
 
     width: 60px;
     height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     border-radius: 50%;
 
     background-color: #3498db;
-    color: white;
+    color: #fff;
+
     font-size: 30px;
+    line-height: 1;
 
     border: none;
+    padding: 0;
+
     cursor: pointer;
 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
+
+    z-index: 99999;
+
+    appearance: none;
+    -webkit-appearance: none;
 }
 
 .floatingBtn:hover {

@@ -1,11 +1,8 @@
 <?php
 session_start();
 if (!isset($_SESSION['user_id'])){
-    header("Location: index.php");
+    header("Location: index.html");
     exit;
-}
-if (isset($_GET['logout'])){
-    unset($_SESSION['logato']);
 }
 
 require_once '../core/functions.php';
@@ -57,7 +54,7 @@ function printEvent($pdo,$after = 0, $before = 0) {
 
 <header>
     <div class="header-left">
-        <a href="index.php"><img src="../img/logo.png" alt="Logo Remindly" class="logo-small"></a>
+        <a href="index.html"><img src="../img/logo.png" alt="Logo Remindly" class="logo-small"></a>
 
         <h1>Remindly</h1>
     </div>

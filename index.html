@@ -1,9 +1,3 @@
-<?php
-session_start();
-unset($_SESSION['logato']);
-
-
-?>
 
 <!DOCTYPE html>
 <html lang="it">
@@ -11,31 +5,31 @@ unset($_SESSION['logato']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Remindly</title>
-    <link rel="stylesheet" href="../css/indexStyle.css">
-    <script defer src="../js/loginScript.js"></script>
+    <link rel="stylesheet" href="css/indexStyle.css">
+    <script defer src="js/loginScript.js"></script>
 </head>
 <body>
 <header>
     <div class="header-left">
-        <a href="index.php">
-        <img src="../img/logo.png" alt="Logo Remindly" class="logo-small">
-        </a>
+
+        <img src="img/logo.png" alt="Logo Remindly" class="logo-small">
+
         <h1>Remindly</h1>
     </div>
     <div class="header-right">
-        <a href="login.php" class="btn">Accedi</a>
-        <a href="registration.html" class="btn">Registrati</a>
+        <a href="pages/login.php" class="btn">Accedi</a>
+        <a href="pages/registration.html" class="btn">Registrati</a>
     </div>
 </header>
 
 <main>
     <div class="main-content">
-        <img src="../img/logo.png" alt="Logo Remindly" class="logo-big">
+        <img src="img/logo.png" alt="Logo Remindly" class="logo-big">
         <h1>Benvenuto in Remindly</h1>
         <h3>La miglior applicazione web per gestire i tuoi impegni!</h3>
         <div class="main-buttons">
-            <a href="login.php" class="btn">Accedi</a>
-            <a href="registration.html" class="btn">Registrati</a>
+            <a href="pages/login.php" class="btn">Accedi</a>
+            <a href="pages/registration.html" class="btn">Registrati</a>
         </div>
     </div>
 </main>

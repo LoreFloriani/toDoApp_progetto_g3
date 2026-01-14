@@ -75,16 +75,26 @@ header {
     font-size: 0.9rem;
     color: #555;
 }
+p.registrazioneF {
+    display: inline-block;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: white;
+    background-color: #e74c3c;
+    padding: 8px 12px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
 
 p.registrazione {
-    display: inline-block;       /* fa sì che il box si adatti al contenuto */
-    margin-top: 15px;            /* come richiesto */
-    font-size: 0.9rem;           /* come richiesto */
-    color: #555;                 /* colore del testo */
-    background-color: #2ecc71;   /* sfondo giallo */
-    padding: 8px 12px;           /* distanza tra testo e bordo */
-    border-radius: 5px;          /* opzionale: angoli leggermente arrotondati */
-    box-sizing: border-box;      /* evita che padding allarghi troppo il box */
+    display: inline-block;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #555;
+    background-color: #2ecc71;
+    padding: 8px 12px;
+    border-radius: 5px;
+    box-sizing: border-box;
 }
 
 /* Link nel form coerenti con palette chiara */

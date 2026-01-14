@@ -20,7 +20,7 @@ if (isset($_SESSION['user_id'])){
 <body>
 <header>
     <div class="header-left">
-        <a href="index.php">
+        <a href="../index.html">
         <img src="../img/logo.png" alt="Logo Remindly" class="logo-small">
         </a>
         <h1>Remindly</h1>
@@ -29,7 +29,9 @@ if (isset($_SESSION['user_id'])){
 
 <main>
     <div class="form-container">
+        <a href="../index.html">
         <img src="../img/logo.png" alt="Logo Remindly" class="logo-big">
+        </a>
         <h2>Accedi al tuo account</h2>
 
         <form method="post" action="private/handleLogin.php" id="login-form">
@@ -49,8 +51,13 @@ if (isset($_SESSION['user_id'])){
 
 
         <?php
-        if (isset($_SESSION['logato']) && $_SESSION['logato']){
-            echo ('<p class="registrazione">Registrazione avvenuta con successo <br></p>');
+        if (isset($_GET['registered'])){
+            if ($_GET['registered']){
+                echo ('<p class="registrazione">Registrazione avvenuta con successo <br></p>');
+            }else{
+                echo ('<p class="registrazioneF">Registrazione NON avvenuta, provare nuovamente <br></p>');
+            }
+
         }
         ?>
         <p class="form-footer">Non hai un account? <a href="registration.html">Registrati qui</a></p>

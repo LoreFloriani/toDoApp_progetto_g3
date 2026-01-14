@@ -25,11 +25,10 @@ if ($password !== $cPassword) {
 $result = create_user($pdo, $username, $password, $nome, $cognome, $dataNascita);
 
 if ($result === true) {
-    $_SESSION['logato'] = true;
-    header('Location: ../login.php'); // reindirizza alla pagina login
+    header('Location: ../login.php?registered=1');
     exit;
 } else {
-
-    echo $result;
+    header('Location: ../login.php?registered=0');
+    exit;
 }
 

@@ -20,7 +20,7 @@ if (isset($_SESSION['user_id'])){
 <body>
 <header>
     <div class="header-left">
-        <a href="index.html">
+        <a href="../index.html">
         <img src="../img/logo.png" alt="Logo Remindly" class="logo-small">
         </a>
         <h1>Remindly</h1>
@@ -29,7 +29,7 @@ if (isset($_SESSION['user_id'])){
 
 <main>
     <div class="form-container">
-        <a href="index.html">
+        <a href="../index.html">
         <img src="../img/logo.png" alt="Logo Remindly" class="logo-big">
         </a>
         <h2>Accedi al tuo account</h2>

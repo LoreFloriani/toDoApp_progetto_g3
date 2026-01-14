@@ -6,7 +6,7 @@ if (!isset($_SESSION['user_id'])){
 }
 
 require_once '../core/functions.php';
-include '../core/database.php';
+require_once '../core/database.php';
 
 
 $now = new DateTime();
@@ -54,7 +54,7 @@ function printEvent($pdo,$after = 0, $before = 0) {
 
 <header>
     <div class="header-left">
-        <a href="index.html"><img src="../img/logo.png" alt="Logo Remindly" class="logo-small"></a>
+        <a href="../index.html"><img src="../img/logo.png" alt="Logo Remindly" class="logo-small"></a>
 
         <h1>Remindly</h1>
     </div>
@@ -64,8 +64,6 @@ function printEvent($pdo,$after = 0, $before = 0) {
 </header>
 
 <main>
-
-    <button class="floatingBtn" id="floatingBtn">+</button>
 
     <section>
         <h2>🔴 Scadenze urgenti (entro 2 giorni)</h2>
@@ -103,6 +101,46 @@ function printEvent($pdo,$after = 0, $before = 0) {
             ?>
         </div>
     </details>
+
+    <button class="floatingBtn" id="newEvent">+</button>
+
+    <div id="newEventForm" class="newEventForm">
+        <form method="post" action="private/hendleCrateEvent.php" id="newEventForm">
+            <button type="button" class="closeForm">&times;</button>
+            <h2>Crea evento:</h2>
+
+            <label>
+                Titolo:
+                <input type="text" name="titolo" id="titolo" required>
+            </label>
+
+            <label>
+                Descrizione:
+                <input type="text" name="descrizione" id="descrizione" required>
+            </label>
+
+            <label>
+                Scadenza:
+                <input type="date" name="scadenza" id="scadenza" required>
+            </label>
+
+            <select name="idCategoria" id="idCategoria" class="selectCategoria">
+                <option value="" disabled selected>
+                    Seleziona categoria
+                </option>
+                <?php
+                $cat = getCategorie($pdo);
+                foreach ($cat as $categoria) {
+                    echo '<option value="' . $categoria['idCategoria'] . '">' . $categoria['nomeCategoria'] . '</option>';
+                }
+                ?>
+            </select>
+
+            <button type="submit">Crea</button>
+        </form>
+    </div>
+
+
 
 
 </main>

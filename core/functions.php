@@ -23,15 +23,6 @@ function get_user_by_username($pdo, $username){
     return $user ?: null;
 }
 
-function get_event_by_userId($pdo, $user_id){
-    $sql = "SELECT * FROM evento WHERE idUtente = :utente";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute(['utente' => $user_id]);
-
-    $eventi = $stmt->fetch(PDO::FETCH_ASSOC);
-    return $eventi ?: null;
-}
-
 function getEventi($pdo, $user_id , $after = 0, $before = 0){
     $sql = "SELECT idEvento, titolo, descrizione, scadenza, nomeCategoria
             from evento as e
@@ -75,6 +66,33 @@ function changeEventStatus($pdo, $idEvento){
     $stmt->execute(['id' => $idEvento]);
 }
 
+function getCategorie($pdo){
+    $sql = "SELECT * FROM categoria";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    $categorie = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $categorie ?: null;
+}
+
+function createCategorie($pdo,$nomeCategoria){
+    $sql = "INSERT INTO categoria(NomeCategoria) VALUES(:nome)";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['nome' => $nomeCategoria]);
+    return $pdo->lastInsertId();
+}
+function createEvent($pdo,$titolo,$descrizione,$scadenza,$idUtente,$idCategoria){
+    $sql = "insert into evento (titolo, descrizione, scadenza, idUtente, idCategoria)
+            values (:titolo, :descrizione, :scadenza, :idUtente, :idCategoria)";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([
+        'titolo' => $titolo,
+        'descrizione' => $descrizione,
+        'scadenza' => $scadenza,
+        'idUtente' => $idUtente,
+        'idCategoria' => $idCategoria]);
+
+    return $pdo->lastInsertId();
+}
 
 function create_user($pdo, $nomeUtente, $password, $nome, $cognome, $dataNascita) {
 

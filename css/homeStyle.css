@@ -6,7 +6,6 @@
     font-family: 'Arial', sans-serif;
 }
 
-
 body {
     background-color: #f9f9f9;
     color: #333;
@@ -21,43 +20,6 @@ header {
     padding: 20px 50px;
     background-color: #ffffff;
     border-bottom: 2px solid #e0e0e0;
-}
-
-.floatingBtn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-
-    width: 60px;
-    height: 60px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background-color: #3498db;
-    color: #fff;
-
-    font-size: 30px;
-    line-height: 1;
-
-    border: none;
-    padding: 0;
-
-    cursor: pointer;
-
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-
-    z-index: 99999;
-
-    appearance: none;
-    -webkit-appearance: none;
-}
-
-.floatingBtn:hover {
-    background-color: #0056b3;
 }
 
 .header-left {
@@ -86,6 +48,41 @@ header {
 
 .header-right a.btn-logout:hover {
     background-color: #c0392b;
+}
+
+/* --- Floating Button --- */
+.floatingBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    background-color: #3498db;
+    color: #fff;
+
+    font-size: 30px;
+    line-height: 1;
+
+    border: none;
+    padding: 0;
+
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+    z-index: 99999;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.floatingBtn:hover {
+    background-color: #0056b3;
 }
 
 /* --- Sezioni --- */
@@ -166,6 +163,81 @@ details summary {
     cursor: pointer;
     margin-bottom: 15px;
     color: #2c3e50;
+}
+
+/* --- Overlay form eventi --- */
+.newEventForm {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    display: none; /* nascosto di default */
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0, 0, 0, 0.6); /* sfondo semitrasparente */
+    z-index: 100000; /* sopra tutto */
+    padding: 20px;
+}
+
+.newEventForm form {
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: relative;
+}
+
+/* Pulsante chiusura */
+.newEventForm .closeForm {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+}
+
+/* Input e select */
+.newEventForm input,
+.newEventForm select {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+    background-color: #fff;
+    color: #333;
+}
+
+/* Opzioni select leggibili */
+.newEventForm select option {
+    background-color: #fff;
+    color: #333;
+}
+
+/* Pulsante submit */
+.newEventForm form button[type="submit"] {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: #fff;
+    cursor: pointer;
+}
+
+.newEventForm form button[type="submit"]:hover {
+    background-color: #0056b3;
 }
 
 /* --- Responsive --- */

@@ -7,6 +7,6 @@ if (isset($_POST['idEvento'])) {
     $id = $_POST['idEvento'];
 
     changeEventStatus($pdo, $id);
-    echo "ho fatto la funzione";
+
 }
 

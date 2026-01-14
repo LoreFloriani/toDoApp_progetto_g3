@@ -93,6 +93,12 @@ function createEvent($pdo,$titolo,$descrizione,$scadenza,$idUtente,$idCategoria)
 
     return $pdo->lastInsertId();
 }
+function deleteEvent($pdo, $idEvento) {
+    $sql = "DELETE FROM evento WHERE idEvento = :idEvento";
+    $stmt = $pdo->prepare($sql);
+
+    return $stmt->execute(['idEvento' => $idEvento]);
+}
 
 function create_user($pdo, $nomeUtente, $password, $nome, $cognome, $dataNascita) {
 

@@ -19,11 +19,22 @@ function printEvent($pdo,$after = 0, $before = 0) {
         if ($after !=0 || $before !=0) {
             foreach ($eventi as $evento) {
                 echo(
-                        '<div class="evento" data-id="' . $evento['idEvento'] . '">' .
+                        '<div class="evento" >' .
                         '<h3>' . $evento['titolo'] . '</h3>' .
                         '<p>' . $evento['descrizione'] . '</p>' .
-                        '<small>' . $evento['scadenza'] . '</small>' .
-                        '<span class="categoria">' . $evento['nomeCategoria'] . '</span>' .
+                        '<div class="eventoCategoria">
+                            <small>' . $evento['scadenza'] . '</small>' .
+                            '<span class="categoria">' . $evento['nomeCategoria'] . '</span>
+                        </div>
+                        <div class="bottoniEventi">
+                            <button class="btn-elimina-Ev" data-id="' . $evento['idEvento'] . '">
+                                <img src="../img/trash.png" alt="Elimina" />
+                            </button>
+                            <button class="btn-evento-nCompletato" data-id="' . $evento['idEvento'] . '">
+                                <img src="../img/done.png" alt="Completato" />
+                            </button>
+                            
+                        </div>' .
                         '</div>');
             }
         }else{
@@ -32,8 +43,19 @@ function printEvent($pdo,$after = 0, $before = 0) {
                         '<div class="evento completato" data-id="' . $evento['idEvento'] . '">' .
                         '<h3>' . $evento['titolo'] . '</h3>' .
                         '<p>' . $evento['descrizione'] . '</p>' .
-                        '<small>' . $evento['scadenza'] . '</small>' .
-                        '<span class="categoria">' . $evento['nomeCategoria'] . '</span>' .
+                        '<div class="eventoCategoria">
+                            <small>' . $evento['scadenza'] . '</small>' .
+                        '<span class="categoria">' . $evento['nomeCategoria'] . '</span>
+                        </div>
+                        <div class="bottoniEventi">
+                            <button class="btn-elimina-Ev" data-id="' . $evento['idEvento'] . '">
+                                <img src="../img/trash.png" alt="Elimina" />
+                            </button>
+                            <button class="btn-evento-completato" data-id="' . $evento['idEvento'] . '">
+                                <img src="../img/done.png" alt="Completato" />
+                            </button>
+                            
+                        </div>' .
                         '</div>');
             }
         }
@@ -66,7 +88,7 @@ function printEvent($pdo,$after = 0, $before = 0) {
 <main>
 
     <section>
-        <h2>🔴 Scadenze urgenti (entro 2 giorni)</h2>
+        <h2 class="h2SectionUrgente">Urgente</h2>
         <div class="grid-eventi">
         <?php
         printEvent($pdo,0,2);
@@ -76,7 +98,7 @@ function printEvent($pdo,$after = 0, $before = 0) {
 
 
     <section>
-        <h2>🟠 Scadenze vicine (entro 7 giorni)</h2>
+        <h2 class="h2SectionPs">Prossima Settimana</h2>
         <div class="grid-eventi">
             <?php
             printEvent($pdo,2,7);
@@ -85,16 +107,18 @@ function printEvent($pdo,$after = 0, $before = 0) {
     </section>
 
     <section>
-        <h2>🟢 Scadenze lontane</h2>
+        <h2 class="h2SectionNurgente">Senza fretta</h2>
         <div class="grid-eventi">
             <?php
-            printEvent($pdo,2);
+            printEvent($pdo,7);
             ?>
         </div>
     </section>
 
     <details>
-        <summary>✅ Eventi completati</summary>
+        <summary>
+            <img src="../img/done.png" alt="immagine completati" class="summaryCompletati">
+            Eventi completati</summary>
         <div class="grid-eventi" id="completati">
             <?php
             printEvent($pdo);
@@ -124,17 +148,19 @@ function printEvent($pdo,$after = 0, $before = 0) {
                 <input type="date" name="scadenza" id="scadenza" required>
             </label>
 
-            <select name="idCategoria" id="idCategoria" class="selectCategoria">
-                <option value="" disabled selected>
-                    Seleziona categoria
-                </option>
-                <?php
-                $cat = getCategorie($pdo);
-                foreach ($cat as $categoria) {
-                    echo '<option value="' . $categoria['idCategoria'] . '">' . $categoria['nomeCategoria'] . '</option>';
-                }
-                ?>
-            </select>
+            <label>
+                <select name="idCategoria" id="idCategoria" class="selectCategoria">
+                    <option value="" disabled selected>
+                        Seleziona categoria
+                    </option>
+                    <?php
+                    $cat = getCategorie($pdo);
+                    foreach ($cat as $categoria) {
+                        echo '<option value="' . $categoria['idCategoria'] . '">' . $categoria['nomeCategoria'] . '</option>';
+                    }
+                    ?>
+                </select>
+            </label>
 
             <button type="submit">Crea</button>
         </form>

@@ -37,6 +37,38 @@ header {
     height: 40px;
 }
 
+.summaryCompletati {
+    height: 15px;
+}
+
+section h2 {
+    display: inline-block;
+    margin-top: 15px;
+    font-size: 1.1rem;
+    padding: 8px 12px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.h2SectionUrgente{
+    color: white;
+    background-color: #e74c3c;
+}
+
+.h2SectionPs{
+    color: #333;
+    background-color: #f1c40f;
+}
+
+.h2SectionNurgente{
+    color: #555;
+    background-color: #2ecc71;
+}
+
+
+
+
+
 .header-right a.btn-logout {
     background-color: #e74c3c;
     color: white;
@@ -103,6 +135,7 @@ section h2 {
     margin-bottom: 40px;
 }
 
+/* --- Evento --- */
 .evento {
     background-color: #ffffff;
     border: 1px solid #e0e0e0;
@@ -111,10 +144,11 @@ section h2 {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 180px;
+    height: 180px; /* mantiene dimensione fissa */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
     transition: transform 0.2s;
     cursor: pointer;
+    position: relative; /* per posizionare i bottoni */
 }
 
 .evento:hover {
@@ -134,16 +168,46 @@ section h2 {
     flex-grow: 1;
 }
 
-.evento small {
-    font-size: 0.8rem;
-    color: #888;
+/* Categoria sopra scadenza a sinistra */
+.eventoCategoria {
+    display: flex;
+    flex-direction: column; /* categoria sopra scadenza */
+    gap: 2px;
 }
 
 .evento .categoria {
     font-size: 0.85rem;
     color: #3498db;
     font-weight: bold;
-    margin-top: 5px;
+}
+
+.evento small {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+/* Bottoni piccoli in basso a destra */
+.bottoniEventi {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    gap: 5px;
+}
+
+.bottoniEventi button {
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.bottoniEventi button img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* --- Eventi completati --- */
@@ -151,6 +215,28 @@ section h2 {
     background-color: #f0f0f0;
     border-color: #ccc;
     color: #666;
+}
+
+/* Bottone completato eventi già completati */
+.evento.completato .btn-evento-completato img {
+    filter: grayscale(100%); /* icona in bianco e nero */
+}
+
+/* Linea sopra l'immagine del bottone */
+.evento.completato .btn-evento-completato {
+    position: relative; /* necessario per ::after */
+}
+
+.evento.completato .btn-evento-completato::after {
+    content: "";
+    position: absolute;
+    top: 50%; /* posizione verticale centrale rispetto all'immagine */
+    left: 0;
+    width: 100%;
+    height: 2px; /* spessore della linea */
+    background-color: gray;
+    transform: translateY(-50%); /* centra perfettamente la linea */
+    pointer-events: none; /* permette di cliccare comunque il bottone */
 }
 
 /* --- Details eventi completati --- */
@@ -178,7 +264,7 @@ details summary {
     align-items: center;
 
     background-color: rgba(0, 0, 0, 0.6); /* sfondo semitrasparente */
-    z-index: 100000; /* sopra tutto */
+    z-index: 100000;
     padding: 20px;
 }
 
@@ -253,6 +339,11 @@ details summary {
     }
 
     .evento {
-        height: auto;
+        height: 180px; /* mantiene altezza fissa anche su mobile */
+    }
+
+    .bottoniEventi {
+        bottom: 5px;
+        right: 5px;
     }
 }

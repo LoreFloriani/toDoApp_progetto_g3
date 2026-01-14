@@ -63,9 +63,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    document.querySelectorAll('.evento').forEach(evento => {
-        evento.addEventListener('click', () => {
-            const idEvento = evento.dataset.id;
+    document.querySelectorAll('.btn-evento-completato, .btn-evento-nCompletato').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const idEvento = btn.dataset.id;
             if (!idEvento) return;
 
             const formData = new FormData();
@@ -84,6 +84,34 @@ document.addEventListener("DOMContentLoaded", () => {
                     console.error(err);
                     alert('Errore nel cambio stato evento.');
                 });
+        });
+    });
+
+    document.querySelectorAll('.btn-elimina-Ev').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const idEvento = btn.dataset.id;
+            if (!idEvento) return;
+            const eventoDiv = btn.closest('.evento');
+            const titolo = eventoDiv.querySelector('h3').textContent;
+            if (confirm(`Sei sicuro di voler eliminare l'evento "${titolo}"?`)){
+
+                const formData = new FormData();
+                formData.append('idEvento', idEvento);
+
+                fetch('private/hendleDelateEvent.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => {
+                        if (!response.ok) throw new Error('Errore nella richiesta');
+                        return response.text();
+                    })
+                    .then(() => location.reload())
+                    .catch(err => {
+                        console.error(err);
+                        alert('Errore nel eliminazione dell evento.');
+                    });
+            }
         });
     });
 

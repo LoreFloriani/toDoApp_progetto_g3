@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const titolo = document.getElementById("titolo");
     const descrizione = document.getElementById("descrizione");
     const scadenza = document.getElementById("scadenza");
+    const idCategoria = document.getElementById("idCategoria");
 
     newEventForm.addEventListener("submit", (e) => {
         let errori = [];
@@ -39,6 +40,10 @@ document.addEventListener("DOMContentLoaded", () => {
         // validazione descrizione
         if (descrizione.value.trim() === "") {
             errori.push("La descrizione è obbligatorio");
+        }
+        // validazione idCategoria
+        if (idCategoria.value === "") {
+            errori.push("Devi selezionare una categoria");
         }
 
         // validazione scadenza
@@ -85,6 +90,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     alert('Errore nel cambio stato evento.');
                 });
         });
+    });
+
+    document.addEventListener('click', (e) => {
+        const descrizione = e.target.closest('.evento-descrizione');
+        if (!descrizione) return;
+
+        descrizione.classList.toggle('expanded');
     });
 
     document.querySelectorAll('.btn-elimina-Ev').forEach(btn => {

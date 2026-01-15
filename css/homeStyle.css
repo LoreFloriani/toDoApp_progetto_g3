@@ -28,6 +28,21 @@ header {
     gap: 10px;
 }
 
+.evento-descrizione {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;   /* numero di righe visibili */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* quando è espanso */
+.evento-descrizione.expanded {
+    -webkit-line-clamp: unset;
+    overflow: visible;
+}
+
 .header-left h1 {
     font-size: 1.8rem;
     color: #2c3e50;

@@ -21,7 +21,7 @@ function printEvent($pdo,$after = 0, $before = 0) {
                 echo(
                         '<div class="evento" >' .
                         '<h3>' . $evento['titolo'] . '</h3>' .
-                        '<p>' . $evento['descrizione'] . '</p>' .
+                        '<p class="evento-descrizione">' . $evento['descrizione'] . '</p>' .
                         '<div class="eventoCategoria">
                             <small>' . $evento['scadenza'] . '</small>' .
                             '<span class="categoria">' . $evento['nomeCategoria'] . '</span>
@@ -42,7 +42,7 @@ function printEvent($pdo,$after = 0, $before = 0) {
                 echo(
                         '<div class="evento completato" data-id="' . $evento['idEvento'] . '">' .
                         '<h3>' . $evento['titolo'] . '</h3>' .
-                        '<p>' . $evento['descrizione'] . '</p>' .
+                        '<p class="evento-descrizione">' . $evento['descrizione'] . '</p>' .
                         '<div class="eventoCategoria">
                             <small>' . $evento['scadenza'] . '</small>' .
                         '<span class="categoria">' . $evento['nomeCategoria'] . '</span>

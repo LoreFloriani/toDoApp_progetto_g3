@@ -52,10 +52,27 @@ if (isset($_SESSION['user_id'])){
 
         <?php
         if (isset($_GET['registered'])){
-            if ($_GET['registered']){
-                echo ('<p class="registrazione">Registrazione avvenuta con successo <br></p>');
-            }else{
-                echo ('<p class="registrazioneF">Registrazione NON avvenuta, provare nuovamente <br></p>');
+            switch ($_GET['registered']){
+                case 0:
+                    echo ('<p class="registrazioneF">Registrazione NON avvenuta<br>Errore DB: Impossibile creare l\'utente<br>Provare nuovamente <br></p>');
+                    break;
+
+                case 1:
+                    echo ('<p class="registrazione">Registrazione avvenuta con successo <br></p>');
+                    break;
+
+                case 2:
+                    echo ('<p class="registrazioneF">Registrazione NON avvenuta<br>Nome utente gia usato<br>Provare nuovamente <br></p>');
+                    break;
+
+                case 3:
+                    echo ('<p class="registrazioneF">Registrazione NON avvenuta<br>La password deve contenere almeno 8 caratteri<br>Provare nuovamente <br></p>');
+                    break;
+
+                case 4:
+                    echo ('<p class="registrazioneF">Registrazione NON avvenuta<br>Tutti i campi sono obbligatori<br>Provare nuovamente <br></p>');
+                    break;
+
             }
 
         }

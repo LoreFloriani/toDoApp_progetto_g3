@@ -102,6 +102,8 @@ function deleteEvent($pdo, $idEvento) {
 
 function create_user($pdo, $nomeUtente, $password, $nome, $cognome, $dataNascita) {
 
+
+
     // Validazione
     if (empty($nomeUtente) ||
         empty($password) ||
@@ -109,23 +111,19 @@ function create_user($pdo, $nomeUtente, $password, $nome, $cognome, $dataNascita
         empty($cognome) ||
         empty($dataNascita)
     ) {
-        return "Tutti i campi sono obbligatori.";
+        return 4;// = "Tutti i campi sono obbligatori";
     }
 
     // Lunghezza minima password
     if (strlen($password) < 8) {
-        return "La password deve contenere almeno 8 caratteri.";
+        return 3;//$error[] = "La password deve contenere almeno 8 caratteri";
     }
 
-    // Controllo username esistente
-    $stmt = $pdo->prepare(
-        "SELECT idUtente FROM utente WHERE nomeUtente = ?"
-    );
-    $stmt->execute([$nomeUtente]);
-
-    if ($stmt->fetch()) {
-        return "Questo nome utente è già stato preso.";
+    if (getUserByName($pdo, $nomeUtente)) {
+        return 2;// = "Nome utente gia usato";
     }
+
+
 
     // Hash password
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
@@ -139,13 +137,24 @@ function create_user($pdo, $nomeUtente, $password, $nome, $cognome, $dataNascita
 
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$nomeUtente, $hashedPassword, $nome, $cognome, $dataNascita]);
-        //$stmt->execute([$nomeUtente, $password, $nome, $cognome, $dataNascita]);
 
-        return true;
+        return 1;
 
     } catch (PDOException $e) {
-        return "Errore DB: Impossibile creare l'utente.";
+        return 0;//"Errore DB: Impossibile creare l'utente.";
     }
+}
+
+function getUserByName($pdo, $nomeUtente){
+    // Controllo username esistente
+    $stmt = $pdo->prepare(
+        "SELECT idUtente FROM utente WHERE nomeUtente = ?"
+    );
+    $stmt->execute([$nomeUtente]);
+
+
+    return $stmt->fetch();
+
 }
 
 ?>

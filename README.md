@@ -1,7 +1,7 @@
 # toDoApp_progetto_g3
 Progetto vacanze natalizie
-versione dimostrativa 1.5.0
-progetto quasi finito
+versione 2.0.0 completa
+progetto finito
 
 Membri:
 - Lorenzo Floriani (capo gruppo)

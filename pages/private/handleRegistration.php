@@ -24,11 +24,8 @@ if ($password !== $cPassword) {
 
 $result = create_user($pdo, $username, $password, $nome, $cognome, $dataNascita);
 
-if ($result === true) {
-    header('Location: ../login.php?registered=1');
-    exit;
-} else {
-    header('Location: ../login.php?registered=0');
-    exit;
-}
+
+header('Location: ../login.php?registered=' . $result);
+exit;
+
 
